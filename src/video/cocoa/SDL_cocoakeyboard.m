@@ -426,6 +426,7 @@ HandleModifiers(_THIS, unsigned short scancode, unsigned int modifierFlags)
 static void
 UpdateKeymap(SDL_VideoData *data)
 {
+#if defined(MAC_OS_X_VERSION_10_5)
     TISInputSourceRef key_layout;
     const void *chr_data;
     int i;
@@ -483,6 +484,7 @@ UpdateKeymap(SDL_VideoData *data)
 
 cleanup:
     CFRelease(key_layout);
+#endif
 }
 
 void

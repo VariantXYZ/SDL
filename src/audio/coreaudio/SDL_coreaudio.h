@@ -31,7 +31,14 @@
 
 #if MACOSX_COREAUDIO
 #include <CoreAudio/CoreAudio.h>
+#if defined(__ALTIVEC__) && !defined(MAC_OS_X_VERSION_10_5)
+/* to cricumvent a bug in Mac OS X 10.4 SDK */
+#define vector __vector
 #include <CoreServices/CoreServices.h>
+#undef vector
+#else
+#include <CoreServices/CoreServices.h>
+#endif
 #else
 #include <AudioToolbox/AudioToolbox.h>
 #endif

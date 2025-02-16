@@ -83,6 +83,12 @@ struct SDL_SysWMinfo;
 
 #if defined(SDL_VIDEO_DRIVER_COCOA)
 #ifdef __OBJC__
+#if defined(__ALTIVEC__) && !defined(MAC_OS_X_VERSION_10_5)
+/* to cricumvent a bug in Mac OS X 10.4 SDK */
+#define vector __vector
+#include <CoreServices/CoreServices.h>
+#undef vector
+#endif
 #include <Cocoa/Cocoa.h>
 #else
 typedef struct _NSWindow NSWindow;

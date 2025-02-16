@@ -347,9 +347,11 @@ Cocoa_GL_GetDrawableSize(_THIS, SDL_Window * window, int * w, int * h)
 
     /* This gives us the correct viewport for a Retina-enabled view, only
      * supported on 10.7+. */
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
     if ([contentView respondsToSelector:@selector(convertRectToBacking:)]) {
         viewport = [contentView convertRectToBacking:viewport];
     }
+#endif
 
     if (w) {
         *w = viewport.size.width;
