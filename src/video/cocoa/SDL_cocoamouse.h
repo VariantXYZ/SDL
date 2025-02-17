@@ -25,7 +25,7 @@
 
 #include "SDL_cocoavideo.h"
 
-#if !defined(MAC_OS_X_VERSION_10_5)
+#if !(MAC_OS_X_VERSION_MIN_REQUIRED > 1040)
 typedef float CGFloat;
 #endif
 

@@ -25,7 +25,7 @@
 
 #include "SDL_opengl.h"
 
-#if defined(__ALTIVEC__) && !defined(MAC_OS_X_VERSION_10_5)
+#if defined(__ALTIVEC__) && !(MAC_OS_X_VERSION_MIN_REQUIRED > 1040)
 /* to cricumvent a bug in Mac OS X 10.4 SDK */
 #define vector __vector
 #include <CoreServices/CoreServices.h>
@@ -46,6 +46,7 @@
 #include "SDL_cocoawindow.h"
 
 #if !defined(MAC_OS_X_VERSION_10_5)
+// If we aren't using the 10.5 SDK, these won't be available
 typedef long int NSInteger;
 typedef unsigned int NSUInteger;
 #endif

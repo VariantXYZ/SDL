@@ -25,7 +25,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* System dependent filesystem routines                                */
 
-#if defined(__ALTIVEC__) && !defined(MAC_OS_X_VERSION_10_5)
+#if defined(__ALTIVEC__) && !(MAC_OS_X_VERSION_MIN_REQUIRED > 1040)
 /* to cricumvent a bug in Mac OS X 10.4 SDK */
 #define vector __vector
 #include <CoreServices/CoreServices.h>
